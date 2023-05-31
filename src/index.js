@@ -1,6 +1,6 @@
 // write your code here
 
-//needed fixes: can't get comments to post in db.json; can't get display data to update upon click
+//needed fixes: can't get display data to update upon click
 
 //event listener for submit button
 document.querySelector('form').addEventListener('submit', handleSubmit);
@@ -16,7 +16,7 @@ function handleSubmit(e){
         restaurant:form.restaurant.value,
         image:form.image.value,
         rating:form.rating.value,
-        comment:form.newcomment.value
+        comment:form.newcomment.value,
     }
 
     renderRamenCard(ramenObj);
@@ -31,24 +31,24 @@ function renderRamenCard(ramenObj) {
     
     let ramenCard = document.createElement('div')
     ramenCard.classList.add('menuitem')
-    ramenCard.innerHTML = `<img src="${ramenObj.image}" onClick="clickRamen();" />`
+    ramenCard.innerHTML = `<img src="${ramenObj.image}" />`
 
     document.getElementById("ramen-menu").appendChild(ramenCard)
+    ramenCard.addEventListener('click', () => showClickedRamen(ramenObj))
 };
 
-// function for what happens when I click on ramen image
+// updates the display based on what I clicked in the top
 
-function clickRamen(){
-   document.getElementsByClassName('menuitem').addEventListener('click',
-        showClickedRamen()
-    )
-}
+function showClickedRamen(ramenObj) {
+    const ramenDetail = document.getElementById('ramen-detail');
+    const detailImage = ramenDetail.querySelector('.detail-image');
+    detailImage.src = ramenObj.image;
+    detailImage.alt = ramenObj.name;
 
-function showClickedRamen() {
-    let displayImage =  document.getElementsByClassName('detail-image')
-    
-    displayImage.innerHTML = `<img class='detail-image'src="${ramenObj.image}" />`
-    console.log("i was clicked");
+    ramenDetail.querySelector('.name').textContent = ramenObj.name;
+    ramenDetail.querySelector('.restaurant').textContent = ramenObj.restaurant;
+    document.querySelector('#rating-display').textContent = ramenObj.rating;
+    document.querySelector('#comment-display').textContent = ramenObj.comment;
     
 }
 

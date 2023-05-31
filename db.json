@@ -41,18 +41,12 @@
       "comment": "Perfect for a cold night."
     },
     {
-      "name": "TEST",
-      "restaurant": "TEST",
-      "image": "TEST",
-      "rating": "2",
+      "name": "Test",
+      "restaurant": "Test",
+      "image": "http://www.pngmart.com/files/6/Buzz-Lightyear-PNG-Transparent-Picture.png",
+      "rating": "3",
+      "comment": "test comment",
       "id": 6
-    },
-    {
-      "name": "TEST",
-      "restaurant": "TEST",
-      "image": "TEST",
-      "rating": "2",
-      "id": 7
     }
   ]
 }
